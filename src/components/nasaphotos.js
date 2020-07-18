@@ -31,13 +31,13 @@ function NasaPhotos() {
     if(!PhotoData) return <div/>;
 
     return(
-        <>
-        <NavBar />
         <div>
+        <NavBar />
+        <div className="nasa-image">
             
 
             {PhotoData.media_type === 'image' ? (
-            <img src={PhotoData.url} alt={PhotoData.title} />
+            <img src={PhotoData.url} alt={PhotoData.title} className="image" />
             )
              : (
                 <iframe
@@ -50,15 +50,15 @@ function NasaPhotos() {
                 className="photo"
                 />
             )}
-            <div>
-    <h1>{PhotoData.title}</h1>
-    <p>{PhotoData.date}</p>
-    <p>{PhotoData.explanation}</p>
-    <p>{PhotoData.copyright}</p>
+            <div className="description">
+    <h1 className="title-image">{PhotoData.title}</h1>
+    <p className="date">{PhotoData.date}</p>
+    <p className="explanation">{PhotoData.explanation}</p>
+    <p className="copyright">{PhotoData.copyright}</p>
             </div>
 
         </div>
-    </>
+    </div>
     );
 
 }
