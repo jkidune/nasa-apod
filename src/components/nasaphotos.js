@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import NavBar from "./navbar";
 
-const apiKey = process.env.REACT_APP_NASA_KEY;
+const apiKey = process.env.REACT_APP_NASA_API_KEY;
 
 
 
@@ -13,7 +14,7 @@ function NasaPhotos() {
 
         async function fetchPhoto(){
             const res = await fetch (
-                `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+                `https://api.nasa.gov/planetary/apod?api_key=7EguOoMUVljaiMZIA4YRMWpyh6ygkwydWe9Y3vOK`
             );
 
             const data = await res.json();
@@ -30,10 +31,13 @@ function NasaPhotos() {
     if(!PhotoData) return <div/>;
 
     return(
-
         <div>
+        <NavBar />
+        <div className="nasa-image">
+            
+
             {PhotoData.media_type === 'image' ? (
-            <img src={PhotoData.url} alt={PhotoData.title} />
+            <img src={PhotoData.url} alt={PhotoData.title} className="image" />
             )
              : (
                 <iframe
@@ -46,15 +50,15 @@ function NasaPhotos() {
                 className="photo"
                 />
             )}
-            <div>
-    <h1>{PhotoData.title}</h1>
-    <p>{PhotoData.date}</p>
-    <p>{PhotoData.explanation}</p>
-    <p>{PhotoData.copyright}</p>
+            <div className="description">
+    <h1 className="title-image">{PhotoData.title}</h1>
+    <p className="date">{PhotoData.date}</p>
+    <p className="explanation">{PhotoData.explanation}</p>
+    <p className="copyright">{PhotoData.copyright}</p>
             </div>
 
         </div>
-
+    </div>
     );
 
 }
