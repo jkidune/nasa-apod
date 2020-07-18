@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import NavBar from "./navbar";
 
-const apiKey = process.env.REACT_APP_NASA_KEY;
+const apiKey = process.env.REACT_APP_NASA_API_KEY;
 
 
 
@@ -13,7 +14,7 @@ function NasaPhotos() {
 
         async function fetchPhoto(){
             const res = await fetch (
-                `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
+                `https://api.nasa.gov/planetary/apod?api_key=7EguOoMUVljaiMZIA4YRMWpyh6ygkwydWe9Y3vOK`
             );
 
             const data = await res.json();
@@ -30,8 +31,11 @@ function NasaPhotos() {
     if(!PhotoData) return <div/>;
 
     return(
-
+        <>
+        <NavBar />
         <div>
+            
+
             {PhotoData.media_type === 'image' ? (
             <img src={PhotoData.url} alt={PhotoData.title} />
             )
@@ -54,7 +58,7 @@ function NasaPhotos() {
             </div>
 
         </div>
-
+    </>
     );
 
 }
