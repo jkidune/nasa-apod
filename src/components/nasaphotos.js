@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from "./navbar";
 
-const apiKey = process.env.REACT_APP_NASA_API_KEY;
+
 
 
 
