@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+const apiKey = process.env.REACT_APP_NASA_KEY;
+
 
 
 function NasaPhotos() {
@@ -11,7 +13,7 @@ function NasaPhotos() {
 
         async function fetchPhoto(){
             const res = await fetch (
-                'https://api.nasa.gov/planetary/apod?api_key=7EguOoMUVljaiMZIA4YRMWpyh6ygkwydWe9Y3vOK'
+                `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
             );
 
             const data = await res.json();
@@ -30,7 +32,7 @@ function NasaPhotos() {
     return(
 
         <div>
-            <PhotoData.media_type = "image" ? (
+            {PhotoData.media_type === 'image' ? (
             <img src={PhotoData.url} alt={PhotoData.title} />
             )
              : (
@@ -43,7 +45,7 @@ function NasaPhotos() {
                 allowFullScreen
                 className="photo"
                 />
-            )
+            )}
             <div>
     <h1>{PhotoData.title}</h1>
     <p>{PhotoData.date}</p>
