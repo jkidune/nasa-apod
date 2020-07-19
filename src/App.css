@@ -154,3 +154,10 @@ h1 {
   display: block;
   width: 1600px;
 }
+
+.aboutme {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+}
